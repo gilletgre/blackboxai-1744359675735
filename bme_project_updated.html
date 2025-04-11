@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet de connectivité Wi-Fi Outdoor – Brussels Major Event (BME)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        #map { height: 500px; }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+        function initMap() {
+            var brussels = {lat: 50.8467, lng: 4.3499};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: brussels
+            });
+
+            var zones = [
+                {name: "Place Sainte-Catherine", coords: {lat: 50.8435, lng: 4.3470}},
+                {name: "Place De Brouckère", coords: {lat: 50.8440, lng: 4.3520}},
+                {name: "Place de la Bourse", coords: {lat: 50.8390, lng: 4.3470}},
+                {name: "Place de la Monnaie", coords: {lat: 50.8400, lng: 4.3475}},
+                {name: "Place de la Madeleine", coords: {lat: 50.8430, lng: 4.3475}}
+            ];
+
+            zones.forEach(function(zone) {
+                var marker = new google.maps.Marker({
+                    position: zone.coords,
+                    map: map,
+                    title: zone.name
+                });
+            });
+        }
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-blue-600 text-white p-6">
+        <h1 class="text-5xl font-bold">Brussels Major Event (BME)</h1>
+        <p class="text-xl">Connectivité Wi-Fi Outdoor</p>
+    </header>
+    <main class="p-6">
+        <section>
+            <h2 class="text-4xl font-semibold">Objectif général</h2>
+            <p>Mettre en place une infrastructure Wi-Fi temporaire mais robuste, mobile et supervisée, destinée à fournir une connectivité fiable, sécurisée et performante lors d’événements publics à grande échelle organisés par l’ASBL Brussels Major Event (BME).</p>
+        </section>
+        <section>
+            <h2 class="text-4xl font-semibold">Les 5 zones concernées</h2>
+            <ul class="list-disc pl-5">
+                <li>Place Sainte-Catherine: Marché principal + hub logistique (~70 chalets)</li>
+                <li>Place De Brouckère: Animation & spectacle (~50 chalets)</li>
+                <li>Place de la Bourse: Grand public / Food trucks (~40 chalets)</li>
+                <li>Place de la Monnaie: Accueil et info / Équipe BME (~30 chalets)</li>
+                <li>Place de la Madeleine: Zone secondaire connectée / extension (~30 chalets)</li>
+            </ul>
+        </section>
+        <section>
+            <h2 class="text-4xl font-semibold">L’application interactive</h2>
+            <div id="map"></div>
+            <script>
+                initMap();
+            </script>
+        </section>
+        <section>
+            <h2 class="text-4xl font-semibold">Scénarios techniques possibles</h2>
+            <h3 class="font-semibold">Scénario 1 – Connectivité autonome (fallback mobile)</h3>
+            <p>APs + switch PoE + routeur 5G (modem Teltonika)</p>
+            <h3 class="font-semibold">Scénario 2 – Connectivité hybride (fibre + 5G)</h3>
+            <p>Utilisation d’une fibre publique existante + backup 5G</p>
+            <h3 class="font-semibold">Scénario 3 – Mutualisation multi-événements</h3>
+            <p>Achat de matériel par BME pour 10 événements/an</p>
+        </section>
+        <section>
+            <h2 class="text-4xl font-semibold">Bénéfices attendus</h2>
+            <ul class="list-disc pl-5">
+                <li>Professionnalisation des événements BME</li>
+                <li>Réduction des problèmes de paiement</li>
+                <li>Facilité de supervision centralisée</li>
+                <li>Réutilisation inter-événements = investissement durable</li>
+                <li>Image moderne et connectée pour la Ville de Bruxelles</li>
+            </ul>
+        </section>
+    </main>
+    <footer class="bg-blue-600 text-white p-4 text-center">
+        <p>&copy; 2023 Brussels Major Event. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
